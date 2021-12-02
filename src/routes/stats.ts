@@ -1,5 +1,4 @@
 import { Request, Response, Router } from "express"
-import { json } from "stream/consumers";
 import { getManager } from "typeorm"
 
 
@@ -10,17 +9,19 @@ const skeetrBites = async (request: Request, response: Response) => {
         let errors: any = {}
         const entityManager = getManager();
 
-    const getSkeetrCount = await entityManager.query(`
+        // SUM of the skeetrCount column
+        // all the bites of every user is summed
+        const getSkeetrCount = await entityManager.query(`
 
-    SELECT
+        SELECT
 
-    SUM("skeetrCount")
+        SUM("skeetrCount")
 
-    FROM
+        FROM
 
-    visitors;
-    
-    `);
+        visitors;
+        
+        `);
     return response.json({getSkeetrCount})
     //SkeeterStats: `The total skeetr count is ${getSkeetrCount.toString()}` returns object Object
         
