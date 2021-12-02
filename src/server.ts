@@ -2,6 +2,7 @@ import "reflect-metadata";
 import {createConnection} from "typeorm";
 
 import visitorRoutes from './routes/visitors'
+import statsRoutes from './routes/stats'
 
 import express from 'express';
 
@@ -17,6 +18,7 @@ app.use(morgan('dev'))
 
 app.get('/', (request, response) => response.send('Hello, world!'))
 app.use('/api/visitors', visitorRoutes)
+app.use('/api/stats', statsRoutes)
 app.listen(PORT, async () => {
 
     console.log(`Server running at http://localhost:${PORT}`)
