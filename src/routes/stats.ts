@@ -6,7 +6,6 @@ const skeetrBites = async (request: Request, response: Response) => {
 
 
     try {
-        let errors: any = {}
         const entityManager = getManager();
 
         // SUM of the skeetrCount column
@@ -15,11 +14,11 @@ const skeetrBites = async (request: Request, response: Response) => {
 
         SELECT
 
-        SUM("skeetrCount")
+            SUM("skeetrCount")
 
         FROM
 
-        visitors;
+            visitors;
         
         `);
     return response.json({getSkeetrCount})
@@ -32,6 +31,31 @@ const skeetrBites = async (request: Request, response: Response) => {
 }
 
 
+const totalVisitors = async (request: Request, response: Response) => {
+
+    try {
+        const entityManager = getManager();
+
+        const getVisitors = await entityManager.query(`
+        SELECT
+
+            COUNT(*)
+
+        FROM
+
+            visitors;
+
+        `);
+
+    return response.json({getVisitors})
+
+    } catch (error) {
+        return response.status(401).json(error)
+    }
+
+}
+
+
 
 
 
@@ -39,6 +63,7 @@ const skeetrBites = async (request: Request, response: Response) => {
 const router = Router()
 
 router.get('/skeetr-bites', skeetrBites)
+router.get('/skeetr-visitors', totalVisitors)
 
 
 export default router
