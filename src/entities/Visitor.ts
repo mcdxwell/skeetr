@@ -16,8 +16,11 @@ export default class Visitor extends BaseEntity {
     @Column()
     nickname!: string;
 
-    @Column()
-    sex!: string;
+    @Column({nullable: true})
+    male!: number;
+
+    @Column({nullable: true})
+    female!: number;
 
     @Column()
     height!: number;

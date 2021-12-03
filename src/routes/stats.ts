@@ -1,5 +1,6 @@
 import { Request, Response, Router } from "express"
-import { getManager } from "typeorm"
+import { request } from "http";
+import { EntityManager, getManager } from "typeorm"
 
 
 const skeetrBites = async (request: Request, response: Response) => {
@@ -57,6 +58,33 @@ const totalVisitors = async (request: Request, response: Response) => {
 
 
 
+const totalSexes = async (request: Request, response: Response) => {
+
+    try {
+        const entityManager = getManager();
+        const sexCount = await entityManager.query(`
+
+        SELECT
+
+            SUM(male) as total_males,
+            SUM(female) as total_females
+
+        FROM
+
+            visitors;
+
+
+        `);
+
+    return response.json({sexCount})
+    } catch (error) {
+        return response.status(401).json(error)
+    }
+
+}
+
+
+
 
 
 
@@ -64,6 +92,7 @@ const router = Router()
 
 router.get('/skeetr-bites', skeetrBites)
 router.get('/skeetr-visitors', totalVisitors)
+router.get('/skeetr-sexes', totalSexes)
 
 
 export default router

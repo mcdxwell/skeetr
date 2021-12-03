@@ -10,6 +10,8 @@ const sktrCount = async (request: Request, response: Response) => {
 
     const { nickname, sex, height, weight } = request.body
     let skeetrCount: number;
+    let male: number;
+    let female: number;
 
     try {
         let errors: any = {}
@@ -24,10 +26,12 @@ const sktrCount = async (request: Request, response: Response) => {
         
         if (sex === 'male'){
             skeetrCount = 10;
+            male = 1;
         } else if (sex === 'female') {
             skeetrCount = 9;
+            female = 1;
         }
-        const visitor = new Visitor({nickname, sex, height, weight, skeetrCount})
+        const visitor = new Visitor({nickname, male, female, height, weight, skeetrCount})
         errors = await validate(visitor)
         await visitor.save()
 
