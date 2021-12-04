@@ -84,6 +84,63 @@ const totalSexes = async (request: Request, response: Response) => {
 }
 
 
+const avgFemaleWeight = async (request: Request, response: Response) => {
+
+    // To get females: SELECT * FROM visitors WHERE female = 1;
+    try {
+        const entityManager = getManager();
+        const avgWeight = await entityManager.query(`
+        
+        SELECT 
+        
+            AVG(weight) AS avg_female_weight
+        
+        FROM 
+        
+            visitors 
+        
+        WHERE 
+        
+            female = 1;
+
+
+        `)
+        return response.json({avgWeight})
+    } catch (error) {
+        return response.status(401).json(error)
+    }
+
+}
+
+const avgMaleWeight = async (request: Request, response: Response) => {
+
+    // To get males: SELECT * FROM visitors WHERE male = 1;
+    try {
+        const entityManger = getManager();
+        const avgWeight = await entityManger.query(`
+        
+        SELECT
+
+            AVG(weight) AS avg_male_weight
+
+        FROM 
+
+            visitors
+
+        WHERE
+
+            male = 1;
+        
+        `)
+        return response.json({avgWeight})
+    } catch (error) {
+        
+    }
+
+
+}
+
+// TO-DO: rewrite the avg male and female queries. Do both queries in one.
 
 
 
@@ -93,6 +150,7 @@ const router = Router()
 router.get('/skeetr-bites', skeetrBites)
 router.get('/skeetr-visitors', totalVisitors)
 router.get('/skeetr-sexes', totalSexes)
-
+router.get('/skeetr-avg-female-weights', avgFemaleWeight)
+router.get('/skeetr-avg-male-weights', avgMaleWeight)
 
 export default router
