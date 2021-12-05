@@ -1,4 +1,4 @@
-import { Request, Response, Router } from "express"
+import { request, Request, Response, Router } from "express"
 import { EntityManager, getManager } from "typeorm"
 
 
@@ -178,6 +178,23 @@ const avgWeights = async (request: Request, response: Response) => {
 
 }
 
+const avgHeights = async (request: Request, response: Response) => {
+    
+    try {
+        const entityManager = getManager();
+        const avg_female_height = await entityManager.query(`
+        
+        SELECT AVG(height) AS avg_female_height FROM visitors WHERE female = 1; `);
+
+        const avg_male_height = await entityManager.query(`
+        SELECT AVG(height) AS avg_male_height FROM visitors WHERE male = 1; `);
+
+        return response.json({avg_female_height, avg_male_height})
+    } catch (error) {
+        return response.status(401).json(error)
+    }
+}
+
 
 const router = Router()
 
@@ -188,5 +205,6 @@ router.get('/skeetr-sexes', totalSexes)
 router.get('/skeetr-avg-female-weights', avgFemaleWeight)
 router.get('/skeetr-avg-male-weights', avgMaleWeight)
 router.get('/skeetr-avg-weights', avgWeights)
+router.get('/skeetr-avg-heights', avgHeights)
 
 export default router
