@@ -1,5 +1,4 @@
 import { Request, Response, Router } from "express"
-import { request } from "http";
 import { EntityManager, getManager } from "typeorm"
 
 
@@ -31,6 +30,21 @@ const skeetrBites = async (request: Request, response: Response) => {
     
 }
 
+const avgSkeetrBites = async (request: Request, response: Response) => {
+
+    try {
+        const entityManager = getManager();
+        const getAVG = await entityManager.query(`
+        
+        SELECT AVG("skeetrCount") AS avg_skeetr_bites FROM visitors;
+
+        `);
+
+        return response.json({getAVG})
+    } catch (error) {
+        return response.status(401).json(error)
+    }
+}
 
 const totalVisitors = async (request: Request, response: Response) => {
 
@@ -142,7 +156,7 @@ const avgMaleWeight = async (request: Request, response: Response) => {
 
 // TO-DO: rewrite the avg male and female queries. Do both queries in one.
 
-
+// Not the best solution, I think, but it will work. lol
 const avgWeights = async (request: Request, response: Response) => {
 
     // To get females: SELECT * FROM visitors WHERE female = 1;
@@ -165,10 +179,10 @@ const avgWeights = async (request: Request, response: Response) => {
 }
 
 
-
 const router = Router()
 
 router.get('/skeetr-bites', skeetrBites)
+router.get('/skeetr-bites-avg', avgSkeetrBites)
 router.get('/skeetr-visitors', totalVisitors)
 router.get('/skeetr-sexes', totalSexes)
 router.get('/skeetr-avg-female-weights', avgFemaleWeight)
