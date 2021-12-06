@@ -35,7 +35,7 @@ const sktrCount = async (request: Request, response: Response) => {
         errors = await validate(visitor)
         await visitor.save()
 
-        return response.json({Hello: `Hello, ${nickname} it would take you ${skeetrCount} to perish.`, visitor})
+        return response.json({Hello: `Hello, ${nickname} it would take you ${skeetrCount} skeetr bites to perish.`, visitor})
     } catch (error) {
         console.log(error);
 

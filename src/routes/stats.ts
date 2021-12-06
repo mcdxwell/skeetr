@@ -1,5 +1,5 @@
-import { request, Request, Response, Router } from "express"
-import { EntityManager, getManager } from "typeorm"
+import { Request, Response, Router } from "express"
+import { getManager } from "typeorm"
 
 
 const skeetrBites = async (request: Request, response: Response) => {
@@ -12,15 +12,7 @@ const skeetrBites = async (request: Request, response: Response) => {
         // all the bites of every user is summed
         const getSkeetrCount = await entityManager.query(`
 
-        SELECT
-
-            SUM("skeetrCount")
-
-        FROM
-
-            visitors;
-        
-        `);
+        SELECT SUM("skeetrCount") FROM visitors; `);
     return response.json({getSkeetrCount})
     //SkeeterStats: `The total skeetr count is ${getSkeetrCount.toString()}` returns object Object
         
@@ -36,9 +28,7 @@ const avgSkeetrBites = async (request: Request, response: Response) => {
         const entityManager = getManager();
         const getAVG = await entityManager.query(`
         
-        SELECT AVG("skeetrCount") AS avg_skeetr_bites FROM visitors;
-
-        `);
+        SELECT AVG("skeetrCount") AS avg_skeetr_bites FROM visitors; `);
 
         return response.json({getAVG})
     } catch (error) {
@@ -52,15 +42,7 @@ const totalVisitors = async (request: Request, response: Response) => {
         const entityManager = getManager();
 
         const getVisitors = await entityManager.query(`
-        SELECT
-
-            COUNT(*)
-
-        FROM
-
-            visitors;
-
-        `);
+        SELECT COUNT(*) FROM visitors; `);
 
     return response.json({getVisitors})
 
@@ -78,17 +60,7 @@ const totalSexes = async (request: Request, response: Response) => {
         const entityManager = getManager();
         const sexCount = await entityManager.query(`
 
-        SELECT
-
-            SUM(male) as total_males,
-            SUM(female) as total_females
-
-        FROM
-
-            visitors;
-
-
-        `);
+        SELECT SUM(male) as total_males, SUM(female) as total_females FROM visitors; `);
 
     return response.json({sexCount})
     } catch (error) {
@@ -105,20 +77,7 @@ const avgFemaleWeight = async (request: Request, response: Response) => {
         const entityManager = getManager();
         const avgWeight = await entityManager.query(`
         
-        SELECT 
-        
-            AVG(weight) AS avg_female_weight
-        
-        FROM 
-        
-            visitors 
-        
-        WHERE 
-        
-            female = 1;
-
-
-        `)
+        SELECT AVG(weight) AS avg_female_weight FROM visitors WHERE female = 1; `)
         return response.json({avgWeight})
     } catch (error) {
         return response.status(401).json(error)
@@ -133,19 +92,7 @@ const avgMaleWeight = async (request: Request, response: Response) => {
         const entityManger = getManager();
         const avgWeight = await entityManger.query(`
         
-        SELECT
-
-            AVG(weight) AS avg_male_weight
-
-        FROM 
-
-            visitors
-
-        WHERE
-
-            male = 1;
-        
-        `)
+        SELECT AVG(weight) AS avg_male_weight FROM visitors WHERE male = 1; `)
         return response.json({avgWeight})
     } catch (error) {
         

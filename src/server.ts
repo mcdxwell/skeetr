@@ -1,5 +1,5 @@
 import "reflect-metadata";
-import {createConnection} from "typeorm";
+import { createConnection } from "typeorm";
 
 import visitorRoutes from './routes/visitors'
 import statsRoutes from './routes/stats'
@@ -16,7 +16,7 @@ app.use(express.json())
 
 app.use(morgan('dev'))
 
-app.get('/', (request, response) => response.send('Hello, world!'))
+
 app.use('/api/visitors', visitorRoutes)
 app.use('/api/stats', statsRoutes)
 app.listen(PORT, async () => {

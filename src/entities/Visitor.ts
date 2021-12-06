@@ -36,8 +36,6 @@ export default class Visitor extends BaseEntity {
     createdAt!: Date;
 
     
-
-
     toJSON() {
         return instanceToPlain(this);
     }
