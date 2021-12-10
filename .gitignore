@@ -5,4 +5,5 @@ build/
 tmp/
 temp/
 /**/*.env
-/**/skeetrCalc.ts
+src/calculations/skeetrCalc.ts
+
