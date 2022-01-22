@@ -6,13 +6,13 @@ import Bitten from "./components/Bitten"
 import AddToBitten from './components/AddToBitten';
 
 
-interface IState {
+export interface IState {
   user: {
     name?: string
     weight: number
     height: number
     sex: string
-    bites: number
+    bites?: number
   }[] // array of objects
 }
 
@@ -33,8 +33,8 @@ function App() {
       <h1>My React app</h1>
       <h2>Author: David McDowell</h2>
       <img src = { skeetrPic } alt = 'skeetr_boi' />
-      <Bitten user = { user }/>
-      <AddToBitten/>
+      <Bitten user = { user } />
+      <AddToBitten user = { user } setUserBites = { setUserBites }/>
     </div>
   );
 }

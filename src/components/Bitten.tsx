@@ -1,14 +1,9 @@
 import React from "react";
+import {IState as Props}  from "../App"
 
 interface IProps {
-    user: {
-      name?: string
-      weight: number
-      height: number
-      sex: string
-      bites: number
-    }[] // array of objects
-  }
+    user: Props["user"]
+}
 
 const Bitten: React.FC<IProps> = ({ user }) => {
 
