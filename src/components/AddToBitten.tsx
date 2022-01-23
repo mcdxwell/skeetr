@@ -13,7 +13,7 @@ const AddToBitten: React.FC<IProps> = ({user, setUserBites}) => {
         name: "",
         weight: "",
         height: "",
-        sex: ""
+      //  sex: ""
     })
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,7 +24,7 @@ const AddToBitten: React.FC<IProps> = ({user, setUserBites}) => {
     }
 
     const handleClick = (): void => {
-        if(!input.weight || !input.height || !input.sex) return
+        if(!input.weight || !input.height) return
 
         setUserBites([
             ...user,
@@ -32,7 +32,7 @@ const AddToBitten: React.FC<IProps> = ({user, setUserBites}) => {
                 name: input.name,
                 weight: parseInt(input.weight),
                 height: parseInt(input.height),
-                sex: input.sex,
+               // sex: input.sex,
             }
         ]);
 
@@ -40,7 +40,7 @@ const AddToBitten: React.FC<IProps> = ({user, setUserBites}) => {
             name: "",
             weight: "",
             height: "",
-            sex: ""
+           // sex: ""
         })
     }
 
@@ -72,9 +72,7 @@ const AddToBitten: React.FC<IProps> = ({user, setUserBites}) => {
             />
 
             
-            <p><input type="radio" value={input.sex} onChange={handleChange} name="sex" />Male
-            <input type="radio" value={input.sex} onChange={handleChange} name="sex" />Female
-            </p>
+            
             <button
                 onClick={handleClick}
                 className="AddToBitten-btn"

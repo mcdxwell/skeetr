@@ -16,7 +16,7 @@ const Bitten: React.FC<IProps> = ({ user }) => {
                 </div>
                 <p>{user.weight}</p>
                 <p>{user.height}</p>
-                <p>{user.sex}</p>
+               
                 <p>{user.bites}</p>
             </li>
             )
