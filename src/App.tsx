@@ -5,6 +5,8 @@ import skeetrPic from './images/skeetr_boi.png'
 import Bitten from "./components/Bitten"
 import AddToBitten from './components/AddToBitten';
 
+// figure out how to store example information
+// connect radio buttons (sex: M/F) to display after calculating
 
 export interface IState {
   user: {
