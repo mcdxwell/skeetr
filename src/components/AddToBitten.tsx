@@ -32,7 +32,6 @@ const AddToBitten: React.FC<IProps> = ({user, setUserBites}) => {
     }
 
     const isUnitsSelected = (value: string): boolean => {
-        console.log("Selected unites:" + selectedUnits)
         return selectedUnits === value
     }
 
@@ -69,10 +68,8 @@ const AddToBitten: React.FC<IProps> = ({user, setUserBites}) => {
         let hw: number[];
         if (units === 'Customary') {
             hw = [convHeight(height), convWeight(weight)]
-            console.log("Cust: "+ hw)
         } else {
             hw = [height, weight]
-            console.log("metric: "+ hw)
         }
         if (sex === 'Male') {
             return Math.round((((0.3369 * (hw[0]/100)**3 + 0.03219 * hw[1] + 0.6041) * 0.4) / bloodSucked))
@@ -86,14 +83,14 @@ const AddToBitten: React.FC<IProps> = ({user, setUserBites}) => {
         <div className="AddToBitten">
 
         <div>
-            <p>Units*</p>
+            <p>Units</p>
             <input 
                 type="radio"
                 name="units-button"
                 value="Metric"
                 checked={isUnitsSelected('Metric')}
                 onChange={handleUnits}
-            /> Metric
+            /> Metric (cm-kgs)
 
             <input 
                 type="radio"
@@ -101,16 +98,8 @@ const AddToBitten: React.FC<IProps> = ({user, setUserBites}) => {
                 value="Customary"
                 checked={isUnitsSelected('Customary')}
                 onChange={handleUnits}
-            /> Customary
+            /> Customary (in-lbs)
         </div>
-            <input
-                type="text"
-                placeholder="Name"
-                className="AddToBitten-input"
-                value={input.name}
-                onChange={handleChange}
-                name="name"
-            />
             <input
                 type="text"
                 placeholder="Height*"
@@ -130,11 +119,10 @@ const AddToBitten: React.FC<IProps> = ({user, setUserBites}) => {
             />
             
             <div>
-            <p>Sex*</p>
+            <p>Sex</p>
             <input
                 type="radio"
                 name="sex-button"
-                //className="AddToBitten-input"
                 value="Male"
                 checked={isSexSelected('Male')}
                 onChange={handleRadioClick}
@@ -143,15 +131,12 @@ const AddToBitten: React.FC<IProps> = ({user, setUserBites}) => {
             <input
                 type="radio"
                 name="sex-button"
-                //className="AddToBitten-input"
                 value="Female"
                 checked={isSexSelected('Female')}
                 onChange={handleRadioClick}
-
             /> Female
 
 </div>
-
 
             <button
                 onClick={handleClick}

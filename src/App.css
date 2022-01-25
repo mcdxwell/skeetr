@@ -42,38 +42,17 @@
   list-style: none;
   display: flex;
   align-items: center;
-  width: 50rem;
+  width: 25rem;
   margin: 0rem auto;
-  border: 0.1rem solid rgba(0, 0, 0, 0.233);
+  
   padding: 1rem;
   justify-content: space-between;
-}
-
-.Bitten-header {
-  display: flex;
-  align-items: center;
-}
-
-.Bitten-header h2 {
-  color: rgb(37, 36, 36)
-}
-
-.Bitten-img {
-  width: 4rem;
-  height: 4rem;
-  border-radius: 100%;
-  margin-right: 0.5rem;
-}
-
-.Bitten-note {
-  width: 30%;
-  text-align: left;
 }
 
 .AddToBitten {
   display: flex;
   flex-direction: column;
-  width: 30rem;
+  width: 25rem;
   margin: 5rem auto
 }
 
@@ -81,13 +60,4 @@
   padding: 0.5rem;
   font-size: 1rem;
   margin: 0.3rem 0rem
-}
-
-.AddToBitten-btn {
-  padding: 0.5rem;
-  cursor: pointer;
-  background-color: #0b5468;
-  font-weight: 700;
-  color: white;
-  border: none
 }

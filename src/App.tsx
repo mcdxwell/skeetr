@@ -21,22 +21,25 @@ export interface IState {
 function App() {
 
   const [user, setUserBites] = useState<IState["user"]>([
-    {
-      name: "David",
-      weight: 150,
-      height: 68,
-      sex: "Male",
-      bites: 350000
-    }
+
   ])
 
   return (
     <div className="App">
-      <h1>My React app</h1>
-      <h2>Author: David McDowell</h2>
-      <img src = { skeetrPic } alt = 'skeetr_boi' />
+      <h1>Skeetr' Bite Calculator</h1>
+      <h2>Author: David Alejandro McDowell</h2>
+      <body>
+      <p>The idea behind this calculator came from being attacked by "skeeters" in southeast Texas. 
+        <br/> I can't remember how many bit me that day, but it made me think, "how many more mosquito
+        <br/> bites will it take to kill me?"</p>
+
+        <br/>
+        <br/>
+        Enjoy :)
+      </body>
       <Bitten user = { user } />
       <AddToBitten user = { user } setUserBites = { setUserBites }/>
+      <img src = { skeetrPic } alt = 'skeetr_boi' width={640} height={480}/>
     </div>
   );
 }
