@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/skeetr/static/css/main.df2df8f1.css",
+    "main.js": "/skeetr/static/js/main.e6c3b2b1.js",
+    "static/js/787.cfbf9daf.chunk.js": "/skeetr/static/js/787.cfbf9daf.chunk.js",
+    "index.html": "/skeetr/index.html",
+    "main.df2df8f1.css.map": "/skeetr/static/css/main.df2df8f1.css.map",
+    "main.e6c3b2b1.js.map": "/skeetr/static/js/main.e6c3b2b1.js.map",
+    "787.cfbf9daf.chunk.js.map": "/skeetr/static/js/787.cfbf9daf.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.df2df8f1.css",
+    "static/js/main.e6c3b2b1.js"
+  ]
+}
