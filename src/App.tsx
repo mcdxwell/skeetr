@@ -13,7 +13,7 @@ export interface IState {
     name?: string
     weight: number
     height: number
-    //sex: string
+    sex: string
     bites?: number
   }[] // array of objects
 }
@@ -25,7 +25,7 @@ function App() {
       name: "David",
       weight: 150,
       height: 68,
-     // sex: "Male",
+      sex: "Male",
       bites: 350000
     }
   ])

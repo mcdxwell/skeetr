@@ -1,6 +1,6 @@
 import React from "react";
 import {IState as Props}  from "../App"
-
+import AddToBitten from '../components/AddToBitten';
 interface IProps {
     user: Props["user"]
 }
@@ -14,9 +14,9 @@ const Bitten: React.FC<IProps> = ({ user }) => {
                 <div className="Bitten-header">
                     <h2>{user.name}</h2>
                 </div>
-                <p>{user.weight}</p>
                 <p>{user.height}</p>
-               
+                <p>{user.weight}</p>
+                <p>{user.sex}</p>
                 <p>{user.bites}</p>
             </li>
             )
